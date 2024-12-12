@@ -2,6 +2,7 @@ package com.example.appfood;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -10,6 +11,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class AuthInterceptor implements Interceptor {
+
     private Context context;
 
     public AuthInterceptor(Context context) {
@@ -22,15 +24,20 @@ public class AuthInterceptor implements Interceptor {
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         String accessToken = sharedPreferences.getString("accessToken", null);
 
-        // Thêm Authorization Header nếu token tồn tại
         Request originalRequest = chain.request();
-        Request.Builder builder = originalRequest.newBuilder();
 
-        if (accessToken != null) {
-            builder.addHeader("Authorization", "Bearer " + accessToken);
+        Log.d("accessTokenaccessTokenaccessToken", "accessTokenaccessTokenaccessTokenaccessToken: " + accessToken);
+
+        // Nếu không có token, gửi request như cũ
+        if (accessToken == null) {
+            return chain.proceed(originalRequest);
         }
 
-        Request newRequest = builder.build();
-        return chain.proceed(newRequest);
+        // Thêm Authorization Header vào request
+        Request modifiedRequest = originalRequest.newBuilder()
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        return chain.proceed(modifiedRequest);
     }
 }

@@ -2,7 +2,7 @@ package com.example.appfood;
 
 public class WalletResponse {
     private boolean success;
-    private Data data;
+    private WalletData data;
 
     // Getter và Setter
     public boolean isSuccess() {
@@ -13,11 +13,11 @@ public class WalletResponse {
         this.success = success;
     }
 
-    public Data getData() {
+    public WalletData getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(WalletData data) {
         this.data = data;
     }
 }

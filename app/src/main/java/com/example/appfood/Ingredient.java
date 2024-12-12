@@ -3,12 +3,13 @@ package com.example.appfood;
 import java.util.List;
 
 public class Ingredient {
-    public String _id;  // ID của nguyên liệu
-    public String name;  // Tên nguyên liệu
-    public String image;  // Hình ảnh của nguyên liệu
-    public String description;  // Mô tả nguyên liệu
-    public List<ITag> iTags;  // Các tag của nguyên liệu
-    public IGroup iGroupID;  // Nhóm của nguyên liệu
+    private String _id;
+    private String name;
+    private String image;
+    private String description;
+    private List<ITag> iTags;
+    private IGroup iGroupID;
+    private boolean isChecked;  // Thêm thuộc tính để theo dõi trạng thái checkbox
 
     // Constructor
     public Ingredient(String _id, String name, String image, String description, List<ITag> iTags, IGroup iGroupID) {
@@ -18,9 +19,10 @@ public class Ingredient {
         this.description = description;
         this.iTags = iTags;
         this.iGroupID = iGroupID;
+        this.isChecked = false;  // Mặc định là chưa được chọn
     }
 
-    // Getter và Setter
+    // Getters và Setters
     public String getId() {
         return _id;
     }
@@ -53,19 +55,39 @@ public class Ingredient {
         this.description = description;
     }
 
-    public List<ITag> getiTags() {
+    public List<ITag> getITags() {
         return iTags;
     }
 
-    public void setiTags(List<ITag> iTags) {
+    public void setITags(List<ITag> iTags) {
         this.iTags = iTags;
     }
 
-    public IGroup getiGroupID() {
+    public IGroup getIGroupID() {
         return iGroupID;
     }
 
-    public void setiGroupID(IGroup iGroupID) {
+    public void setIGroupID(IGroup iGroupID) {
         this.iGroupID = iGroupID;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "_id='" + _id + '\'' +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", iTags=" + iTags +
+                ", iGroupID=" + iGroupID +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.example.appfood.Model;
+package com.example.appfood;
 
 public class Group {
     private String id; // ID của nhóm

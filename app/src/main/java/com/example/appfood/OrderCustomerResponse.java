@@ -2,23 +2,23 @@ package com.example.appfood;
 
 import java.util.List;
 
-public class FoodPackageResponse {
+public class OrderCustomerResponse {
     private boolean success;
-    private Data data;
+    private List<OrderItem> data; // Mảng đơn hàng
 
     public boolean isSuccess() {
         return success;
     }
 
-    public Data getData() {
+    public List<OrderItem> getData() {
         return data;
     }
 
-    public static class Data {
-        private List<FoodPackage> servicePackages;
-
-        public List<FoodPackage> getServicePackages() {
-            return servicePackages;
-        }
+    @Override
+    public String toString() {
+        return "OrderCustomerResponse{" +
+                "success=" + success +
+                ", data=" + data +
+                '}';
     }
 }

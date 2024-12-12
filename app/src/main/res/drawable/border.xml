@@ -3,6 +3,6 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="4dp"
-        android:color="#80CCCCCC" /> <!-- Không cần dấu ngoặc kép trong mã màu -->
+        android:color="#80CCCCCC" />
     <corners android:radius="16dp" />
 </shape>

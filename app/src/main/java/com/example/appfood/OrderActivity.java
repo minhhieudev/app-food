@@ -6,91 +6,79 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class Home extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
 
-    ArrayList<FoodPackage> foodPackages = new ArrayList<>();
+    ArrayList<OrderItem> orders = new ArrayList<>();
     private ApiService apiService ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        // Ánh xạ ImageView của giỏ hàng
-        ImageView gioHangImageView = findViewById(R.id.gioHangImageView);
-
-        // Thêm sự kiện onClickListener cho ImageView
-        gioHangImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang màn hình OrderedPackage
-                Intent intent = new Intent(Home.this, OrderedMeals.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_order);
 
         apiService = RetrofitClient.getApiService(this);
 
         // Call the API to get the list of FoodPackages
-        apiService.getFoodPackages().enqueue(new Callback<FoodPackageResponse>() {
+        apiService.getOrder().enqueue(new Callback<OrderCustomerResponse>() {
             @Override
-            public void onResponse(Call<FoodPackageResponse> call, Response<FoodPackageResponse> response) {
+            public void onResponse(Call<OrderCustomerResponse> call, Response<OrderCustomerResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.d("API Response", response.body().toString()); // Check the response
+                    Log.d("API Response", response.body().toString()); // Log dữ liệu trả về
+
                     if (response.body().isSuccess()) {
-                        foodPackages.clear(); // Clear the current list
-                        List<FoodPackage> servicePackages = response.body().getData().getServicePackages();
-                        // Convert and add FoodPackages to the list
-                        for (FoodPackage servicePackage : servicePackages) {
-                            String imageUrl = "https://res.cloudinary.com/dvxn12n91/image/upload/v1720879125/temp/images/" + servicePackage.mainImage; // Update image path
-                            // Check and get SubscriptionID object
-                            SubscriptionIDs subscription = servicePackage.subscriptionID; // Ensure correct access
+                        orders.clear(); // Xóa danh sách cũ
 
-                            foodPackages.add(new FoodPackage(servicePackage._id,servicePackage.name,  servicePackage.price, imageUrl, servicePackage.description, subscription));
-                        }
+                        // Lấy danh sách đơn hàng từ API
+                        List<OrderItem> fetchedOrders = response.body().getData();
+                        orders.addAll(fetchedOrders); // Thêm tất cả đơn hàng vào danh sách
 
-                        setupRecyclerView(); // Call method to set up RecyclerView
+                        setupRecyclerView(); // Thiết lập RecyclerView
                     } else {
-                        Toast.makeText(Home.this, "Không thể tải dữ liệu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrderActivity.this, "Không thể tải dữ liệu", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Log.e("API Error", "Response code: " + response.code());
-                    Toast.makeText(Home.this, "Không thể tải dữ liệu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OrderActivity.this, "Không thể tải dữ liệu", Toast.LENGTH_SHORT).show();
                 }
             }
 
+
+
             @Override
-            public void onFailure(Call<FoodPackageResponse> call, Throwable t) {
+            public void onFailure(Call<OrderCustomerResponse> call, Throwable t) {
                 if (t instanceof java.net.SocketTimeoutException) {
                     // Handle timeout exception
-                    Toast.makeText(Home.this, "Lỗi: Kết nối quá lâu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OrderActivity.this, "Lỗi: Kết nối quá lâu", Toast.LENGTH_SHORT).show();
                 } else {
                     // Handle other errors
-                    Toast.makeText(Home.this, "Lỗi: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OrderActivity.this, "Lỗi: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void setupRecyclerView() {
-        RecyclerView foodPackageRecyclerView = findViewById(R.id.foodPackageRecyclerView);
-        FoodPackageAdapter adapter = new FoodPackageAdapter(this, foodPackages);
-        foodPackageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        foodPackageRecyclerView.setAdapter(adapter);
+        RecyclerView orderRecyclerView = findViewById(R.id.orderRecyclerView);
+        if (orderRecyclerView != null) {
+            OrderAdapter adapter = new OrderAdapter(this, orders);
+            orderRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            orderRecyclerView.setAdapter(adapter);
+        } else {
+            Log.e("RecyclerView Error", "RecyclerView is null");
+        }
     }
+
+
 }

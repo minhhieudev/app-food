@@ -1,6 +1,6 @@
 package com.example.appfood;
 
-public class CancelMealResponse {
+public class UserInfoUpdateResponse {
     private boolean success;
     private String message;
 

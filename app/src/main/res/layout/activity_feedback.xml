@@ -1,6 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Logo và Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Logo ImageView -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/fast_food"
+        android:layout_marginEnd="8dp" />
+
+        <!-- Title TextView -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Đánh giá bữa ăn"
+            android:textSize="24sp"
+            android:textColor="@color/orange"
+            android:textStyle="bold" />
+
+        <!-- Header icons (Optional - Giỏ hàng và Menu) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end|center_vertical">
+
+            <ImageView
+                android:id="@+id/gioHangImageView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/giohang" /> <!-- Replace with your icon -->
+
+            <ImageView
+                android:id="@+id/menuImageView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/icon_user" /> <!-- Replace with your icon -->
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Rating Stars with RadioButtons and ImageButtons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="19dp"
+        android:orientation="horizontal">
+
+        <!-- RadioButton and ImageButton for 1 Star -->
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" /> <!-- Make RadioButton visible -->
+
+        <ImageButton
+            android:id="@+id/star1"
+            android:layout_width="128dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Star 1"
+            android:onClick="onStarClick"
+            android:src="@drawable/s1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- RadioButton and ImageButton for 2 Stars -->
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" /> <!-- Make RadioButton visible -->
+
+        <ImageButton
+            android:id="@+id/star2"
+            android:layout_width="171dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Star 2"
+            android:onClick="onStarClick"
+            android:src="@drawable/s2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- RadioButton and ImageButton for 3 Stars -->
+        <RadioButton
+            android:id="@+id/radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" /> <!-- Make RadioButton visible -->
+
+        <ImageButton
+            android:id="@+id/star3"
+            android:layout_width="205dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Star 3"
+            android:onClick="onStarClick"
+            android:src="@drawable/s3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="378dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- RadioButton and ImageButton for 4 Stars -->
+        <RadioButton
+            android:id="@+id/radio4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" /> <!-- Make RadioButton visible -->
+
+        <ImageButton
+            android:id="@+id/star4"
+            android:layout_width="261dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Star 4"
+            android:onClick="onStarClick"
+            android:src="@drawable/s4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- RadioButton and ImageButton for 5 Stars -->
+        <RadioButton
+            android:id="@+id/radio5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" /> <!-- Make RadioButton visible -->
+
+        <ImageButton
+            android:id="@+id/star5"
+            android:layout_width="310dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Star 5"
+            android:onClick="onStarClick"
+            android:src="@drawable/s5" />
+    </LinearLayout>
+
+    <!-- Feedback EditText -->
+    <EditText
+        android:id="@+id/feedbackEditText"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:hint="Nhập phản hồi"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageButton
+        android:id="@+id/sendFeedbackButton"
+        android:layout_width="253dp"
+        android:layout_height="66dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Send Feedback"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/phanhoi" />
+
+</LinearLayout>

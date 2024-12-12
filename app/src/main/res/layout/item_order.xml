@@ -14,8 +14,8 @@
     <!-- LinearLayout chứa thông tin món ăn -->
     <ImageView
         android:id="@+id/foodImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="111dp"
+        android:layout_height="92dp"
         android:scaleType="centerCrop"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
 
             <!-- Food Name -->
             <TextView
-                android:id="@+id/foodName"
+                android:id="@+id/code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -59,56 +59,46 @@
                 tools:ignore="HardcodedText" />
 
             <!-- Food Price -->
-            <TextView
-                android:id="@+id/foodPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10.000"
-                android:textColor="@color/orange"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
-        <!-- Food Description -->
-        <TextView
-            android:id="@+id/foodDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard."
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
-            tools:ignore="HardcodedText" />
-
         <!-- Number of people ordered -->
         <TextView
-            android:id="@+id/totalSub"
+            android:id="@+id/foodName"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="4dp"
+            android:text=""
+            android:textColor="#4CAF50"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/createdAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="99 người đã đặt"
-            android:textColor="#4CAF50"
-            android:textSize="14sp"
+            android:text="10.000"
+            android:textColor="@color/orange"
+            android:textSize="18sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/packageInfo"
+        android:id="@+id/totalPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_red_rounded"
         android:gravity="center"
         android:padding="8dp"
-        android:text="2 phần / 7 ngày"
+        android:text="0"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodInfoContainer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

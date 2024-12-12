@@ -1,6 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Hình ảnh món ăn -->
+    <ImageView
+        android:id="@+id/foodImageView"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bga"
+        android:background="@drawable/border"
+        android:clipToOutline="true"
+        />
+
+    <!-- Tên món ăn và giá -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="7dp"
+        android:gravity="center_vertical">
+
+        <!-- Tên món ăn -->
+        <TextView
+            android:id="@+id/foodNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Tên Món Ăn"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_weight="1" />
+
+        <!-- Giá món ăn -->
+        <TextView
+            android:id="@+id/foodPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/foodDescriptionTextView"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Lorem Ipsum là văn bản giả tạo." />
+
+    <TextView
+        android:id="@+id/mealObjectiveLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Mục tiêu cho bữa ăn"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/objectivesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal" />
+
+
+    <Button
+        android:id="@+id/customizeButton"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/red"
+        android:text="Tùy chỉnh thành phần và đặt hàng"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/recentMealsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ảnh các bữa ăn gần đây"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="11dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentMealsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal" />
+
+    <!-- Thành phần món ăn -->
+
+    <TextView
+        android:id="@+id/mealIngredientsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Thành phần dự kiến"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredientsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+
+
+</LinearLayout>

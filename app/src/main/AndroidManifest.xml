@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    />
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
@@ -28,6 +28,40 @@
         <activity
             android:name=".Home"
             android:exported="true" />
+
+        <!-- Thêm khai báo cho FoodPackageDetailActivity -->
+        <activity
+            android:name=".FoodPackageDetailActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".OrderedMeals"
+            android:exported="true" />
+
+        <activity
+            android:name=".ChangeDateActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ViewDetailsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".RateMealActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".UpdateFavoriteIngredientsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".OrderActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".UpdateContactActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

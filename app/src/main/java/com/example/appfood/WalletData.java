@@ -1,23 +1,14 @@
 package com.example.appfood;
 
 public class WalletData {
-    private long balance;
-    private long totalRecharged;
+    private Wallet wallet;
 
     // Getter và Setter
-    public long getBalance() {
-        return balance;
+    public Wallet getWallet() {
+        return wallet;
     }
 
-    public void setBalance(long balance) {
-        this.balance = balance;
-    }
-
-    public long getTotalRecharged() {
-        return totalRecharged;
-    }
-
-    public void setTotalRecharged(long totalRecharged) {
-        this.totalRecharged = totalRecharged;
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 }

@@ -2,7 +2,7 @@ package com.example.appfood;
 
 import java.util.List;
 
-public class oodPackage {
+public class FoodPackage {
     public String _id;  // ID của gói dịch vụ
     public String name;  // Tên gói dịch vụ
     public String description;  // Mô tả gói dịch vụ

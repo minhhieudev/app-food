@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="2dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- CheckBox nằm trước ảnh -->
+    <CheckBox
+        android:id="@+id/ingredientCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:gravity="center_vertical"
+        android:visibility="gone"/> <!-- Căn giữa theo chiều dọc -->
+
+    <!-- Ảnh thành phần -->
+    <ImageView
+        android:id="@+id/foodImageView"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="2dp" /> <!-- Khoảng cách giữa checkbox và ảnh -->
+
+    <!-- Phần thông tin gồm tên và danh sách tag -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical"> <!-- Căn giữa theo chiều dọc -->
+
+        <!-- Tên thành phần -->
+        <TextView
+            android:id="@+id/foodNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="2dp" />
+
+        <!-- Danh sách tag -->
+        <LinearLayout
+            android:id="@+id/tagContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+            <!-- Các tag sẽ là ImageView với background là hình tròn -->
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

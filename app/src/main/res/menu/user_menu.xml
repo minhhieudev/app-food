@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+    <item
+        android:id="@+id/menu_item_email"
+        android:title="Email: user@example.com"/>
+    <item
+        android:id="@+id/menu_item_balance"
+        android:icon="@drawable/icon_mat"
+        android:title="Số dư: " />
+    <item
+        android:id="@+id/menu_item_address"
+        android:title="Thông tin" />
+    <item
+        android:id="@+id/menu_item_logout"
+        android:title="Đăng xuất"/>
 </menu>

@@ -2,21 +2,21 @@
 package com.example.appfood;
 
 public class RegisterRequest {
-    private String username;
+    private String email;
     private String password;
 
     public RegisterRequest(String username, String password) {
-        this.username = username;
+        this.email = username;
         this.password = password;
     }
 
     // Getter và Setter nếu cần
     public String getUsername() {
-        return username;
+        return email;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.email = username;
     }
 
     public String getPassword() {
